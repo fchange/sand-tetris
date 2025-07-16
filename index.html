@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沙子俄罗斯方块</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="480" height="640"></canvas>
+
+        <div id="gameInfo">
+            <div class="info-panel">
+                <div class="info-title">SCORE</div>
+                <div class="score-display" id="score">0</div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-title">TIME</div>
+                <div class="time-display" id="time">0:00</div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-title">NEXT</div>
+                <div style="height: 40px; display: flex; align-items: center; justify-content: center; color: #29adff;">
+                    ?
+                </div>
+            </div>
+        </div>
+
+        <!-- 左侧装饰面板 -->
+        <div id="leftPanel">
+            <div class="decoration-panel">
+                <div class="panel-title">STATISTICS</div>
+                <div class="stat-item">
+                    <span class="stat-label">LINES</span>
+                    <span class="stat-value" id="lines">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">LEVEL</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SPEED</span>
+                    <span class="stat-value" id="speed">1x</span>
+                </div>
+            </div>
+            
+            <div class="decoration-panel">
+                <div class="panel-title">SAND PHYSICS</div>
+                <div class="physics-display">
+                    <div class="sand-particle"></div>
+                    <div class="sand-particle"></div>
+                    <div class="sand-particle"></div>
+                    <div class="sand-flow">~~~</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部状态栏 -->
+        <div id="statusBar">
+            <div class="status-section">
+                <span class="status-icon">🎮</span>
+                <span class="status-text">SAND TETRIS v1.0</span>
+            </div>
+            <div class="status-section">
+                <span class="status-icon">⚡</span>
+                <span class="status-text" id="fps">60 FPS</span>
+            </div>
+            <div class="status-section">
+                <span class="status-icon">🏆</span>
+                <span class="status-text" id="highScore">HIGH: 0</span>
+            </div>
+        </div>
+
+        <div id="controls">
+            <div class="controls-row">
+                <span class="key">←</span><span class="key">→</span> 移动方块
+            </div>
+            <div class="controls-row">
+                <span class="key">↓</span> 快速下落
+            </div>
+            <div class="controls-row">
+                <span class="key">X</span> 顺时针旋转 <span class="key">C</span> 逆时针旋转
+            </div>
+            <div class="controls-row">
+                <span class="key">ESC</span> 暂停游戏
+            </div>
+        </div>
+
+        <div id="mainMenu" class="menu">
+            <h1>沙子俄罗斯方块</h1>
+            <button onclick="startGame()">开始游戏</button>
+            <button onclick="showInstructions()">游戏说明</button>
+        </div>
+
+        <div id="pauseMenu" class="menu hidden">
+            <h2>游戏暂停</h2>
+            <button onclick="resumeGame()">继续游戏</button>
+            <button onclick="backToMenu()">返回主菜单</button>
+        </div>
+
+        <div id="gameOverMenu" class="menu hidden">
+            <h2>GAME OVER</h2>
+            <div class="final-score">FINAL SCORE: <span id="finalScore">0</span></div>
+            <button onclick="restartGame()">RESTART</button>
+            <button onclick="backToMenu()">MAIN MENU</button>
+        </div>
+
+        <div id="instructionsMenu" class="menu hidden">
+            <h2>HOW TO PLAY</h2>
+            <div class="instructions">
+                <h3>游戏特色</h3>
+                <ul>
+                    <li>方块落地后转化为沙粒</li>
+                    <li>沙子遵循真实物理重力</li>
+                    <li>同色沙子连通左右边界时消除</li>
+                    <li>沙子会自然流动和堆积</li>
+                </ul>
+
+                <h3>操作控制</h3>
+                <ul>
+                    <li>← → 键：左右移动方块</li>
+                    <li>↓ 键：快速下落</li>
+                    <li>X 键：顺时针旋转</li>
+                    <li>C 键：逆时针旋转</li>
+                    <li>ESC 键：暂停游戏</li>
+                </ul>
+
+                <h3>游戏策略</h3>
+                <ul>
+                    <li>利用沙子流动特性制造连通</li>
+                    <li>在边界附近放置同色方块</li>
+                    <li>观察沙子堆积模式</li>
+                    <li>合理搭配不同颜色</li>
+                </ul>
+            </div>
+            <button onclick="backToMenu()">BACK TO MENU</button>
+        </div>
+    </div>
+
+    <script src="js/sand.js"></script>
+    <script src="js/tetris.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+
+</html>
