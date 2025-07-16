@@ -3,14 +3,11 @@
 一个创新的俄罗斯方块游戏，将经典方块玩法与真实沙子物理模拟完美结合。当方块落地后，它们会转化为沙粒，遵循重力和流动规律，创造出前所未有的游戏体验。
 
 ## 🎮 在线体验
-
-<!-- 在线体验地址将在部署后更新 -->
-*在线体验地址即将上线...*
+[https://sand-tetris-chi.vercel.app/](https://sand-tetris-chi.vercel.app/)
 
 ## 📸 游戏截图
-
-<!-- 游戏截图将在完成后添加 -->
-*游戏截图即将添加...*
+![](screenshots/game-start.png)
+![](screenshots/game-play.png)
 
 ## ✨ 核心特性
 
